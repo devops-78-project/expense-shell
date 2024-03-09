@@ -12,4 +12,4 @@ curl -o /tmp/frontend.zip https://expense-artifacts.s3.amazonaws.com/frontend.zi
 cd /usr/share/nginx/html
 unzip /tmp/frontend.zip
 
-systemctl restart ngi
+systemctl restart nginx
