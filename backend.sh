@@ -1,28 +1,28 @@
-dnf module disable nodejs -y
-dnf module enable nodejs:20 -y
+dnf module disable nodejs -y >/tmp/expense.log
+dnf module enable nodejs:20 -y >/tmp/expense.log
 
-dnf install nodejs -y
+dnf install nodejs -y >/tmp/expense.log
 
-useradd expense
+useradd expense >/tmp/expense.log
 
-cp backendservice.conf /etc/systemd/system/backend.service
+cp backendservice.conf /etc/systemd/system/backend.service >/tmp/expense.log
 
-rm -rf /app
+rm -rf /app >/tmp/expense.log
 
-mkdir /app
+mkdir /app >/tmp/expense.log
 
-curl -o /tmp/backend.zip https://expense-artifacts.s3.amazonaws.com/expense-backend-v2.zip
-cd /app
-unzip /tmp/backend.zip
+curl -o /tmp/backend.zip https://expense-artifacts.s3.amazonaws.com/expense-backend-v2.zip >/tmp/expense.log
+cd /app >/tmp/expense.log
+unzip /tmp/backend.zip >/tmp/expense.log
 
-cd /app
-npm install
+cd /app >/tmp/expense.log
+npm install >/tmp/expense.log
 
-systemctl daemon-reload
+systemctl daemon-reload >/tmp/expense.log
 
-systemctl enable backend
-systemctl start backend
+systemctl enable backend >/tmp/expense.log
+systemctl start backend >/tmp/expense.log
 
-dnf install mysql -y
+dnf install mysql -y >/tmp/expense.log
 
-mysql -h 172.31.92.59 -uroot -pExpenseApp@1 < /app/schema/backend.sql
+mysql -h 172.31.92.59 -uroot -pExpenseApp@1 < /app/schema/backend.sql >/tmp/expense.log
