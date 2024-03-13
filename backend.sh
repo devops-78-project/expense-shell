@@ -27,6 +27,7 @@ dnf install nodejs -y &>>$log
 check_status $?
 
 print_heading_task "add user application"
+id expense &>>$log
 if [ $1 -ne 0 ]; then
     useradd expense &>>$log
 fi
