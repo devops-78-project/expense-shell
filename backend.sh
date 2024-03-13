@@ -65,9 +65,6 @@ check_status $?
 
 
 print_heading_task "load schema"
- echo 'show databases' | mysql -h 172.31.92.59 -uroot -p${root_user_password} &>>$log
-if [ $? -ne 0 ]; then
-   mysql_secure_installation --set-root-pass ${mysql_root_password} &>>$log
-fi
+mysql -h mysql-dev.ganeshreddy12.online -uroot -pExpenseApp@1 < /app/schema/backend.sql
 check_status $?
 
