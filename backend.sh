@@ -2,6 +2,15 @@ root_user_password=$1
 
 source common.sh
 
+mysql_root_password=$1
+
+if  [ -z "${mysql_root_password}" ]; then
+  echo input password is missing
+  exit 1
+
+fi
+
+
 print_heading_task "disable default old nodejs version"
 dnf module disable nodejs -y &>>/tmp/expense.log
 echo $?
