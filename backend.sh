@@ -28,7 +28,7 @@ check_status $?
 
 print_heading_task "add user application"
 id expense &>>$log
-if [ $1 -ne 0 ]; then
+if [ $? -ne 0 ]; then
     useradd expense &>>$log
 fi
 check_status $?
