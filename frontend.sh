@@ -1,31 +1,33 @@
 source common.sh
 
+
+
 print_heading_task "install nginx"
-dnf install nginx -y
-check status $?
+dnf install nginx -y &>>$log
+check status $? &>>$log
 
 print_heading_task "enable nginx"
-systemctl enable nginx
-systemctl start nginx
-check status $?
+systemctl enable nginx &>>$log
+systemctl start nginx &>>$log
+check status $? &>>$log
 
 print_heading_task "copy expenseservice.conf"
-cp expenseservice.conf /etc/nginx/default.d/expense.conf
-check status $?
+cp expenseservice.conf /etc/nginx/default.d/expense.conf &>>$log
+check status $? &>>$log
 
 print_heading_task "clean old content"
-rm -rf /usr/share/nginx/html/*
-check status $?
+rm -rf /usr/share/nginx/html/* &>>$log
+check status $? &>>$log
 
 print_heading_task "install app content"
-curl -o /tmp/frontend.zip https://expense-artifacts.s3.amazonaws.com/frontend.zip
-check status $?
+curl -o /tmp/frontend.zip https://expense-artifacts.s3.amazonaws.com/frontend.zip &>>$log
+check status $? &>>$log
 
 print_heading_task "extract app content"
-cd /usr/share/nginx/html
-unzip /tmp/frontend.zip
-check status $?
+cd /usr/share/nginx/html &>>$log
+unzip /tmp/frontend.zip &>>$log
+check status $? &>>$log
 
 print_heading_task "restart nginx"
-systemctl restart nginx
-check status $?
+systemctl restart nginx &>>$log
+check status $? &>>$log
