@@ -6,9 +6,9 @@ print_heading_task(){
 
 check_status(){
   if [ $1 -eq 0 ]; then
-    echo success
+    echo -e "\e[32m success  \e[0m"
     else
-      echo failure
+      echo -e "\e[31m failure  \e[0m"
 
   fi
 
