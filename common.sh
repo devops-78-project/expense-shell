@@ -19,12 +19,12 @@ check_status(){
 
 App_Prereq() {
   print_heading_task "clean the old content"
-  rm -rf ${app-dir} &>>$log
+  rm -rf ${app_dir} &>>$log
   check_status $?
 
 
   print_heading_task "create app directory"
-  mkdir ${app-dir} &>>$log
+  mkdir ${app_dir} &>>$log
   check_status $?
 
 
@@ -34,7 +34,7 @@ App_Prereq() {
 
 
   print_heading_task "extract app content"
-  cd ${app-dir} &>>$log
+  cd ${app_dir} &>>$log
   unzip /tmp/${component}.zip &>>$log
   check_status $?
 }

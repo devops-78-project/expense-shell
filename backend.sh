@@ -4,7 +4,7 @@ source common.sh
 
 mysql_root_password=$1
 app_dir=/app
-component= backend
+component=backend
 
 if  [ -z "${mysql_root_password}" ]; then
   echo input password is missing
