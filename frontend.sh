@@ -24,7 +24,7 @@ curl -o /tmp/frontend.zip https://expense-artifacts.s3.amazonaws.com/frontend.zi
 check status $?
 
 print_heading_task "extract app content"
-cd /usr/share/nginx/html &>>$log
+cd /usr/share/nginx/html
 unzip /tmp/frontend.zip &>>$log
 check status $?
 
