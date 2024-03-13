@@ -65,6 +65,6 @@ check_status $?
 
 
 print_heading_task "load schema"
-mysql -h mysql-dev.ganeshreddy12.online -uroot -pExpenseApp@1 < /app/schema/backend.sql
+mysql -h mysql-dev.ganeshreddy12.online -uroot -p${mysql_root_Password} < /app/schema/backend.sql
 check_status $?
 
