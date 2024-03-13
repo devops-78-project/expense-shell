@@ -80,3 +80,4 @@ check_status $?
 print_heading_task "load schema"
 mysql -h 172.31.92.59 -uroot -p${root_user_password} < /app/schema/backend.sql &>>$log
 check_status $?
+
