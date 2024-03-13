@@ -1,5 +1,8 @@
 source common.sh
 
+app_dir=/usr/share/nginx/html
+component = frontend
+
 
 
 print_heading_task "install nginx"
@@ -17,20 +20,7 @@ cp expenseservice.conf /etc/nginx/default.d/expense.conf &>>$log
 check_status $?
 
 
-print_heading_task "clean old content"
-rm -rf /usr/share/nginx/html/* &>>$log
-check_status $?
-
-
-print_heading_task "install app content"
-curl -o /tmp/frontend.zip https://expense-artifacts.s3.amazonaws.com/frontend.zip &>>$log
-check_status $?
-
-
-print_heading_task "extract app content"
-cd /usr/share/nginx/html
-unzip /tmp/frontend.zip &>>$log
-check_status $?
+App_Prereq
 
 
 print_heading_task "restart nginx"
