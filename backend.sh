@@ -1,5 +1,3 @@
-root_user_password=$1
-
 source common.sh
 
 mysql_root_password=$1
